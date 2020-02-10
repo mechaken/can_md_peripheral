@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#include "can_md_peripheral.h"
+#include "CANMotorPeripheral.h"
 #include "mbed.h"
 
 static const int offset_id_number = 0x300; // 0 ~ 0x7E0
@@ -14,10 +14,10 @@ BusIn dip_sw(PB_3, PB_4, PB_5, PB_6); //下位ビット ~ 上位ビット
 /**/
 static const int total_motor = 1;
 
-CANMDPeripheral motor[total_motor] = {
-    //    CANMDPeripheral(can, PA_5, PA_6, PA_7, PB_3, PB_4, PA_0, PA_1),    // pwm3/2
-    //    CANMDPeripheral(can, PA_8, PA_9, PA_10, PB_0, PB_1, PA_2, PA_4),   // pwm1/3
-    CANMDPeripheral(can, PB_0, PA_6, PA_7, PB_1, PA_5, PA_10, PA_9), // Version 1.2.0 ~ はPA_10とPA_9を交換
+CANMotorPeripheral motor[total_motor] = {
+    //    CANMotorPeripheral(can, PA_5, PA_6, PA_7, PB_3, PB_4, PA_0, PA_1),    // pwm3/2
+    //    CANMotorPeripheral(can, PA_8, PA_9, PA_10, PB_0, PB_1, PA_2, PA_4),   // pwm1/3
+    CANMotorPeripheral(can, PB_0, PA_6, PA_7, PB_1, PA_5, PA_10, PA_9), // Version 1.2.0 ~ はPA_10とPA_9を交換
 };
 
 Serial pc(USBTX, USBRX);

@@ -31,14 +31,14 @@ void adjust();
 int main()
 {
     pc.baud(115200);
-    pc.printf("CAN MD Peripheral Solo Lite 1.0.1\n");
+    pc.printf("CAN MD Peripheral Solo Lite 1.0.0\n");
 
     set_up_id();
     can.attach(&get_data);
     ticker.attach(&adjust, 0.001);
 
     while (true)
-        wait(100.0f);
+        ;
 }
 
 void set_up_id()

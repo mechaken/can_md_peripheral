@@ -38,7 +38,7 @@ int main()
     ticker.attach(&adjust, 0.001);
 
     while (true)
-        ;
+        wait(100.0f);
 }
 
 void set_up_id()
@@ -50,8 +50,7 @@ void set_up_id()
     int rx_filter_id = dip_id * 16 + offset_id_number;
     //can.filter(rx_filter_id, 0x7F0, CANAny, 1); // handleは0にしたほうがいいかも
 
-    for (int i = 0; i < total_motor; i++)
-    {
+    for (int i = 0; i < total_motor; i++) {
         int main_id = rx_filter_id + (i * 2);
         motor[i].id(main_id);
     }
@@ -63,10 +62,8 @@ void get_data()
 {
     printf("GET!");
     can.read(msg); // can.read(msg, 1);
-    for (int i = 0; i < total_motor; i++)
-    {
-        if (msg.id == motor[i].id())
-        {
+    for (int i = 0; i < total_motor; i++) {
+        if (msg.id == motor[i].id()) {
             // debug("receive: %d\n", i);
             motor[i].decode_can_message(msg.data);
             // debug("duty: %1.3f, state: %d\r", motor[i].duty_cycle(), motor[i].state());
@@ -77,8 +74,7 @@ void get_data()
 
 void adjust()
 {
-    for (int i = 0; i < total_motor; i++)
-    {
+    for (int i = 0; i < total_motor; i++) {
         motor[i].adjust();
         motor[i].release_time_dec();
     }

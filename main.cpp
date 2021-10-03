@@ -31,7 +31,7 @@ void adjust();
 int main()
 {
     pc.baud(115200);
-    pc.printf("CAN MD Peripheral Solo Lite 1.0.0\n");
+    pc.printf("CAN MD Peripheral Solo Lite 1.0.1\n");
 
     set_up_id();
     can.attach(&get_data);
